@@ -19,7 +19,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <NextThemesProvider disableThemeTransition {...themeProps}>{children}</NextThemesProvider>
+        <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

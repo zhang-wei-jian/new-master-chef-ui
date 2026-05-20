@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, Card, Input } from "@heroui/react";
-import { Text as UIText } from "@heroui/react";
 import { GithubIcon, TwitterIcon, DiscordIcon } from "@/components/icons";
 import Link from "next/link";
 import { WalletConnectButton } from "@/components/WalletConnectButton";
@@ -107,7 +106,9 @@ function SwapCard() {
           <TokenSelector label="To" amount="0.0" token={{ name: "USDC", symbol: "$", color: "#2775ca" }} />
 
           {/* CTA Button */}
-          <WalletConnectButton />
+          <button className="w-full h-[50px] rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white font-semibold shadow-lg shadow-purple-500/20 transition-all duration-300 mt-4">
+            Connect a wallet
+          </button>
 
           {/* Subtle link */}
           <div className="text-center mt-3">
@@ -136,10 +137,7 @@ function TokenSelector({ label, amount, token }: { label: string; amount: string
         {/* Amount input */}
         <Input
           placeholder={amount}
-          classNames={{
-            input: "text-right text-xl md:text-2xl font-bold text-white !placeholder-white/15",
-            inputWrapper: "shadow-none p-0 h-full bg-transparent border-none min-w-[100px]",
-          }}
+          className="text-right text-xl md:text-2xl font-bold text-white !placeholder-white/15 shadow-none p-0 h-full bg-transparent border-none min-w-[100px]"
         />
       </div>
     </div>
@@ -166,12 +164,12 @@ function StatsSection() {
                 Live
               </span>
             )}
-            <UIText size="xl" weight="bold" className="text-white text-[36px] md:text-[48px] tracking-tight group-hover:scale-105 transition-transform duration-300">
+            <span className="text-white text-[36px] md:text-[48px] tracking-tight group-hover:scale-105 transition-transform duration-300 font-bold block">
               {stat.value}
-            </UIText>
-            <UIText size="sm" className="text-white/25 font-medium uppercase tracking-wider text-xs">
+            </span>
+            <span className="text-white/25 font-medium uppercase tracking-wider text-xs block">
               {stat.label}
-            </UIText>
+            </span>
           </div>
         ))}
       </div>
@@ -201,8 +199,8 @@ function AppsOverviewSection() {
           <Card key={app.title} className="p-6 bg-[#13131f] hover:bg-[#1a1a2e] transition-all duration-300 cursor-pointer rounded-2xl flex items-center gap-5 border border-white/[0.04] hover:border-white/[0.08] group">
             <span className="text-[36px] group-hover:scale-110 transition-transform duration-300">{app.icon}</span>
             <div>
-              <UIText weight="bold" size="lg" className="text-white/90 group-hover:text-white transition-colors">{app.title}</UIText>
-              <UIText size="sm" className="text-white/[0.25] mt-0.5">{app.desc}</UIText>
+            <span className="text-white/90 group-hover:text-white transition-colors font-bold">{app.title}</span>
+              <span className="text-white/[0.25] mt-0.5">{app.desc}</span>
             </div>
           </Card>
         ))}
@@ -223,12 +221,9 @@ function NewsletterSection() {
         <div className="flex gap-3 w-full md:w-auto">
           <Input
             placeholder="Enter your email"
-            classNames={{
-              input: "text-white text-sm",
-              inputWrapper: "bg-[#0d0d18] border border-white/[0.06] h-12 rounded-full min-w-[240px]",
-            }}
+            className="bg-[#0d0d18] border border-white/[0.06] h-12 rounded-full min-w-[240px] text-white text-sm"
           />
-          <Button color="primary" className="whitespace-nowrap bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white rounded-full h-12 px-7 font-semibold shadow-lg shadow-purple-500/20 transition-all duration-300">
+          <Button className="whitespace-nowrap bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white rounded-full h-12 px-7 font-semibold shadow-lg shadow-purple-500/20 transition-all duration-300">
             Subscribe
           </Button>
         </div>
@@ -267,7 +262,7 @@ function Footer() {
             { title: "Help", links: ["Support", "Feedback", "Status"] },
           ].map((col) => (
             <div key={col.title} className="flex flex-col gap-3 min-w-[90px]">
-              <UIText weight="bold" size="sm" className="text-white/[0.45] uppercase tracking-wider">{col.title}</UIText>
+              <span className="text-white/[0.45] uppercase tracking-wider font-bold text-sm">{col.title}</span>
               {col.links.map((link) => (
                 <Link key={link} href="#" className="text-sm text-white/[0.18] hover:text-white/60 transition-colors">
                   {link}
@@ -283,7 +278,7 @@ function Footer() {
 
       {/* Bottom row: copyright + legal links */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-        <UIText size="sm" className="text-white/[0.12]">© {currentYear} - Uniswap Labs</UIText>
+        <span className="text-white/[0.12] text-sm">© {currentYear} - Uniswap Labs</span>
         <div className="flex gap-8">
           <Link href="#" className="text-sm text-white/[0.12] hover:text-white/40 transition-colors">Privacy Policy</Link>
           <Link href="#" className="text-sm text-white/[0.12] hover:text-white/40 transition-colors">Terms of Service</Link>

@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, Chip, Input } from "@heroui/react";
-import { Text as UIText } from "@heroui/react";
 import { useState } from "react";
 import Link from "next/link";
 import { WalletConnectButton } from "@/components/WalletConnectButton";
@@ -85,10 +84,10 @@ function PoolCard({ pool }: { pool: Pool }) {
                 </div>
               </div>
               <div>
-                <UIText weight="bold" size="sm" className="text-white/90 group-hover:text-white transition-colors">{pool.token0} / {pool.token1}</UIText>
+                <span className="text-white/90 group-hover:text-white transition-colors font-bold text-sm">{pool.token0} / {pool.token1}</span>
                 <div className="flex gap-1.5 mt-1.5">
-                  <Chip size="xs" variant="flat" className="bg-[#0d0d18] text-white/30 border border-white/[0.04] px-2 py-0.5">{pool.feeTier}</Chip>
-                  <Chip size="xs" variant="flat" className="bg-[#0d0d18] text-white/30 border border-white/[0.04] px-2 py-0.5">{pool.chain}</Chip>
+                  <Chip size="sm" className="bg-[#0d0d18] text-white/30 border border-white/[0.04] px-2 py-0.5">{pool.feeTier}</Chip>
+                  <Chip size="sm" className="bg-[#0d0d18] text-white/30 border border-white/[0.04] px-2 py-0.5">{pool.chain}</Chip>
                 </div>
               </div>
             </div>
@@ -108,8 +107,8 @@ function PoolCard({ pool }: { pool: Pool }) {
               { label: "24h Fees", value: pool.fees24h },
             ].map((item) => (
               <div key={item.label} className="flex justify-between items-center">
-                <UIText size="sm" className="text-white/[0.2]">{item.label}</UIText>
-                <UIText weight="bold" size="sm" className="text-white/80 group-hover:text-white transition-colors">{item.value}</UIText>
+                <span className="text-white/[0.2] text-sm">{item.label}</span>
+                <span className="text-white/80 group-hover:text-white transition-colors font-bold text-sm">{item.value}</span>
               </div>
             ))}
           </div>
@@ -146,11 +145,8 @@ export default function PoolsPage() {
           <Input
             placeholder="Search by token pair or chain"
             value={searchQuery}
-            onValueChange={setSearchQuery}
-            classNames={{
-              input: "text-sm text-white",
-              inputWrapper: "h-12 rounded-full bg-[#13131f] border border-white/[0.06] hover:border-white/[0.1] transition-colors min-w-[320px]",
-            }}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="min-w-[320px] h-12 rounded-full bg-[#13131f] border border-white/[0.06] hover:border-white/[0.1] transition-colors"
           />
         </div>
 
@@ -164,8 +160,8 @@ export default function PoolsPage() {
         ) : (
           <div className="flex flex-col items-center justify-center py-24 text-white/[0.15]">
             <span className="text-5xl mb-5 opacity-30">🔍</span>
-            <UIText weight="bold" size="lg" className="text-white/30">No pools found</UIText>
-            <UIText size="sm" className="mt-1">Try a different search term.</UIText>
+            <span className="text-white/30 font-bold text-lg">No pools found</span>
+            <span className="mt-1 text-sm">Try a different search term.</span>
           </div>
         )}
       </main>
@@ -173,7 +169,7 @@ export default function PoolsPage() {
       {/* Footer */}
       <footer className="w-full border-t border-white/[0.04] py-6 px-6">
         <div className="container mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-4">
-          <UIText size="sm" className="text-white/[0.12]">© 2026 - Uniswap Labs</UIText>
+          <span className="text-white/[0.12] text-sm">© 2026 - Uniswap Labs</span>
           <div className="flex gap-8">
             <Link href="#" className="text-sm text-white/[0.12] hover:text-white/40 transition-colors">Privacy Policy</Link>
             <Link href="#" className="text-sm text-white/[0.12] hover:text-white/40 transition-colors">Terms of Service</Link>

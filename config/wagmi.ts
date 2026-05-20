@@ -7,19 +7,11 @@ import {
   polygon,
   base,
 } from "wagmi/chains";
-import { injected, walletConnect } from "wagmi/connectors";
-
-export const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || undefined;
-
-const connectors = [injected()];
-
-if (projectId) {
-  connectors.push(walletConnect({ projectId }));
-}
+import { injected } from "wagmi/connectors";
 
 export const config = createConfig({
   chains: [mainnet, sepolia, arbitrum, optimism, polygon, base],
-  connectors,
+  connectors: [injected()],
   ssr: true,
   transports: {
     [mainnet.id]: http(),

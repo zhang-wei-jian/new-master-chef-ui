@@ -3,7 +3,6 @@
 import { Button } from "@heroui/react";
 import { useAccount, useConnect, useDisconnect, useChainId } from "wagmi";
 import { injected } from "wagmi/connectors";
-import { projectId } from "@/config/wagmi";
 
 function formatAddress(address: string): string {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
@@ -49,14 +48,12 @@ export function WalletConnectButton() {
 
   return (
     <Button
-      color={isConnected ? "default" : "primary"}
       size="sm"
       className={`rounded-full font-semibold px-5 h-[38px] shadow-lg transition-all duration-300 ${
         isConnected
           ? "bg-[#1e1e30] text-white/90 border border-white/[0.06] hover:bg-[#252540]"
           : "bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 shadow-purple-500/20"
-      }`}
-      isLoading={isPending}
+      } ${isPending ? "opacity-50 pointer-events-none" : ""}`}
       onClick={handleConnect}
     >
       {isConnected ? (
