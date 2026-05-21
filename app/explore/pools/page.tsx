@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Chip, Input } from "@heroui/react";
+import { Card, Chip } from "@heroui/react";
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { WalletConnectButton } from "@/components/WalletConnectButton";
@@ -241,19 +241,25 @@ export default function PoolsPage() {
             </Link>
           </div>
 
-          <Input
-            placeholder="Search by token pair or chain"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="min-w-[280px] h-10 rounded-full bg-transparent border border-white/[0.06] hover:border-white/[0.12] transition-colors"
-            endContent={
-              searchQuery && (
-                <button onClick={() => setSearchQuery("")} className="text-white/30 hover:text-white/60">
-                  ✕
-                </button>
-              )
-            }
-          />
+          <div className="relative min-w-[280px] h-10">
+            <input
+              type="text"
+              placeholder="Search by token pair or chain"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full h-full rounded-full bg-transparent border border-white/[0.06] hover:border-white/[0.12] transition-colors text-white text-sm px-4 outline-none placeholder:text-white/25"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/60 transition-colors"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Pool table */}

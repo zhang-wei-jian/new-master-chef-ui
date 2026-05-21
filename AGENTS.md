@@ -45,3 +45,10 @@ No test runner configured. No typecheck script — rely on `next build` for type
 - Import alias `@/*` maps to project root (see `tsconfig.json`)
 - Wagmi v3 + viem v2 configured in `config/wagmi.ts`
 - No Prettier formatter enforced at CI level; ESLint `prettier/prettier` rule is `warn` only
+
+## HeroUI v3 Notes
+
+- **HeroUI v3 API differs from v2** — no `endContent`, `startContent` props on `Input`. Use native `<input>` with custom wrapper or `InputGroup` + `InputGroup.Prefix`/`InputGroup.Suffix` pattern.
+- Input component is `InputRoot` internally; props like `placeholder`, `value`, `onChange` go on the inner element, not the root.
+- `TextField` wraps `InputGroup` — structure: `<TextField><InputGroup><InputGroup.Input placeholder="..." /></InputGroup></TextField>`.
+- When making significant component changes, **always run `npm run build`** to catch TypeScript errors before deployment. Vercel builds will fail on type errors that dev server silently ignores.
