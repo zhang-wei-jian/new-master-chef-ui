@@ -38,3 +38,8 @@ pnpm-lock.yaml
 yarn.lock
 package-lock.json
 bun.lockb
+# playwright mcp output
+.playwright-mcp/
+
+# loose root screenshots (keep images in docs/images/ or public/)
+/*.png
